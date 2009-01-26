@@ -1,0 +1,25 @@
+math.cpp: missing llround()
+fstream_sys_unix.cpp: missing decls for select() and struct timeval
+
+--- origsrc/Falcon-0.8.14/core/engine/core_module/math.cpp	2008-11-08 10:54:01.000000000 -0600
++++ src/Falcon-0.8.14/core/engine/core_module/math.cpp	2009-01-26 00:38:29.891125000 -0600
+@@ -507,7 +507,7 @@ FALCON_FUNC  flc_round ( ::Falcon::VMach
+    else if ( num->type() == FLC_ITEM_NUM )
+    {
+       // Or windows or solaris, use a simple round trick.
+-      #if defined(_MSC_VER) || ( defined (__SVR4) && defined (__sun) )
++      #if defined(_MSC_VER) || defined(__CYGWIN__) || ( defined (__SVR4) && defined (__sun) )
+          numeric n = num->asNumeric();
+          numeric intpart;
+          numeric fractpart = modf(n, &intpart );
+--- origsrc/Falcon-0.8.14/core/engine/fstream_sys_unix.cpp	2008-10-17 18:03:04.000000000 -0500
++++ src/Falcon-0.8.14/core/engine/fstream_sys_unix.cpp	2009-01-26 00:45:40.953625000 -0600
+@@ -22,6 +22,8 @@
+ #include <sys/poll.h>
+ #include <sys/types.h>
+ #include <sys/stat.h>
++#include <sys/select.h>
++#include <sys/time.h>
+ #include <fcntl.h>
+ #include <cstring>
+ #include <string.h>

@@ -1,0 +1,13 @@
+--- origsrc/Falcon-0.8.14/core/engine/CMakeLists.txt	2008-10-14 11:23:35.000000000 -0500
++++ src/Falcon-0.8.14/core/engine/CMakeLists.txt	2009-01-26 01:11:41.406750000 -0600
+@@ -261,7 +261,9 @@ IF(UNIX OR MAC)
+ 
+    #Finally, link everything to the lib dir
+ INSTALL( TARGETS falcon_engine
+-         DESTINATION "${FALCON_LIB_DIR}" )
++         LIBRARY DESTINATION "${FALCON_LIB_DIR}"
++         RUNTIME DESTINATION "${FALCON_BIN_DIR}"
++         ARCHIVE DESTINATION "${FALCON_LIB_DIR}" )
+ 
+ ELSE(UNIX OR MAC)
+ INSTALL( TARGETS falcon_engine

@@ -1,0 +1,14 @@
+--- origsrc/Falcon-0.8.14/core/include/falcon/dll_dl.h	2008-09-26 18:50:42.000000000 -0500
++++ src/Falcon-0.8.14/core/include/falcon/dll_dl.h	2009-01-26 01:49:23.922375000 -0600
+@@ -44,7 +44,11 @@ public:
+ 
+    DllFunc getSymbol( const String &sym_name ) const ;
+    static bool isDllMark( char ch1, char ch2 );
++#ifdef __CYGWIN__
++   static const char *dllExt() { return ".dll"; };
++#else
+    static const char *dllExt() { return ".so"; };
++#endif
+ };
+ 
+ typedef DllLoader_dl DllLoader;
