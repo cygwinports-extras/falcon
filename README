@@ -1,0 +1,53 @@
+falcon
+------------------------------------------
+Falcon is an Open Source, simple, fast and powerful programming 
+language, easy to learn and to feel comfortable with, and a scripting 
+engine ready to empower mission-critical multithreaded applications.
+Falcon provides six integrated programming paradigms: procedural, object 
+oriented, prototype oriented, functional, tabular and message oriented. 
+
+Runtime requirements:
+  cygwin-1.7.1-1
+  libgcc1-4.3.4-3
+  libpcre0-8.00-1
+  libstdc++6-4.3.4-3
+  zlib0-1.2.3-10
+
+Build requirements:
+(besides corresponding -devel packages)
+  binutils-2.19.51-1
+  cmake-2.8.0-11
+  cygport-0.9.10-1
+  gcc4-core-4.3.4-3
+  gcc4-g++-4.3.4-3
+  make-3.81-2
+
+Canonical website:
+  http://www.falconpl.org/
+
+Canonical download:
+  http://www.falconpl.org/project_dl/_official_rel/
+
+-------------------------------------------
+
+Build instructions:
+  unpack falcon-0.9.4.4-X-src.tar.bz2
+    if you use setup to install this src package, it will be
+	 unpacked under /usr/src automatically
+  cd /usr/src
+  cygport ./falcon-0.9.4.4-X.cygport all
+
+This will create:
+  /usr/src/falcon-0.9.4.4-X-src.tar.bz2
+  /usr/src/falcon-0.9.4.4-X.tar.bz2
+
+-------------------------------------------
+
+Port Notes:
+
+----- version 0.9.4.4-1 -----
+Initial release for Cygwin 1.7.
+
+
+Cygwin port maintained by:
+http://sourceware.org/cygwinports/
