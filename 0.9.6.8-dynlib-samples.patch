@@ -1,0 +1,22 @@
+--- origsrc/Falcon-0.9.6.8/tests/native/dynlib/samples/testdialog.fal	2010-12-31 09:25:19.000000000 -0600
++++ src/Falcon-0.9.6.8/tests/native/dynlib/samples/testdialog.fal	2011-01-10 20:44:19.108316900 -0600
+@@ -16,7 +16,7 @@
+ 
+ load dynlib
+ 
+-lib = DynLib( "c:/windows/system32/comdlg32" )
++lib = DynLib( "comdlg32.dll" )
+ // let's use the 8-bit string version; we could do also with 16 bit, but requeres a couple of tricks
+ opendlg = lib.get( "int GetOpenFileNameA( void* data )" )
+ 
+--- origsrc/Falcon-0.9.6.8/tests/native/dynlib/samples/testgtk.fal	2010-12-31 09:25:19.000000000 -0600
++++ src/Falcon-0.9.6.8/tests/native/dynlib/samples/testgtk.fal	2011-01-10 20:44:32.290339900 -0600
+@@ -17,7 +17,7 @@
+ 
+ load dynlib
+ 
+-l = DynLib( "/usr/lib/libgtk-x11-2.0.so" )
++l = DynLib( "/usr/bin/cyggtk-x11-2.0-0.dll" )
+ gtkInit = l.get( "void gtk_init(int argc, char* argv[] )" )
+ gtkDialogWithButtons = l.get(
+          "struct GTKWidget* gtk_dialog_new_with_buttons( const char* str, int x, int y, ... )",

@@ -1,0 +1,28 @@
+--- origsrc/Falcon-0.9.6.8/include/falcon/dll_dl.h	2010-12-31 09:25:12.000000000 -0600
++++ src/Falcon-0.9.6.8/include/falcon/dll_dl.h	2011-01-10 20:36:41.615520200 -0600
+@@ -44,7 +44,11 @@ public:
+ 
+    DllFunc getSymbol( const String &sym_name ) const ;
+    static bool isDllMark( char ch1, char ch2 );
++#ifdef __CYGWIN__
++   static const char *dllExt() { return "dll"; };
++#else
+    static const char *dllExt() { return "so"; };
++#endif
+ };
+ 
+ typedef DllLoader_dl DllLoader;
+--- origsrc/Falcon-0.9.6.8/modules/native/dynlib/src/dynlib_sys_posix.cpp	2010-12-31 09:25:14.000000000 -0600
++++ src/Falcon-0.9.6.8/modules/native/dynlib/src/dynlib_sys_posix.cpp	2011-01-10 20:42:45.632954000 -0600
+@@ -26,7 +26,11 @@ namespace Sys {
+ 
+ const char* dynlib_get_dynlib_ext()
+ {
++#ifdef __CYGWIN__
++   static const char* ext = "dll";
++#else
+    static const char* ext = "so";
++#endif
+    return ext;
+ }
+ 

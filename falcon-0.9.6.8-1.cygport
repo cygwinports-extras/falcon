@@ -1,0 +1,36 @@
+inherit cmake
+
+DESCRIPTION="Falcon programming language"
+HOMEPAGE="http://falconpl.org/"
+SRC_URI="http://falconpl.org/project_dl/_official_rel/Falcon-${PV}.tgz"
+SRC_DIR="Falcon-${PV}"
+
+PATCH_URI="
+	0.9.6.8-dllext.patch
+	0.9.6.8-llround.patch
+	0.9.6.8-dynlib-samples.patch
+	0.9.6.8-gd2-freetype.patch
+"
+
+PKG_NAMES="${PN}"
+PKG_HINTS="setup"
+
+for m in curl dbi dbus gd2 gtk sdl
+do
+	PKG_NAMES+=" ${PN}-$m"
+	PKG_HINTS+=" $m"
+	declare falcon_${m}_CONTENTS="usr/lib/falcon/${m}*"
+	falcon_CONTENTS+=" --exclude=${m} --exclude=${m}_fm.dll"
+done
+falcon_CONTENTS+=" usr/"
+
+DIFF_EXCLUDES="*_parser.* *.fam"
+
+CYGCMAKE_ARGS="-DMYSQL_LIB_DIR=/usr/lib/mysql"
+
+src_test() {
+	cd ${B}
+	./bin/faltest -d ${S}/tests/core/testsuite
+}
+
+DOCS="copyright LICENSE_GPLv2 RELNOTES"
