@@ -15,7 +15,7 @@ PATCH_URI="
 PKG_NAMES="${PN}"
 PKG_HINTS="setup"
 
-for m in curl dbi dbus gd2 gtk sdl
+for m in curl dbi dbus gd2 gtk hpdf sdl
 do
 	PKG_NAMES+=" ${PN}-$m"
 	PKG_HINTS+=" $m"
@@ -25,8 +25,6 @@ done
 falcon_CONTENTS+=" usr/"
 
 DIFF_EXCLUDES="*_parser.* *.fam"
-
-CYGCMAKE_ARGS="-DMYSQL_LIB_DIR=/usr/lib/mysql"
 
 src_test() {
 	cd ${B}
