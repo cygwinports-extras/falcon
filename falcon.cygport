@@ -1,6 +1,15 @@
 inherit cmake
 
-DESCRIPTION="Falcon programming language"
+NAME="falcon"
+VERSION=0.9.6.8
+RELEASE=3
+CATEGORY="Interpreters"
+SUMMARY="Falcon programming language interpreter"
+DESCRIPTION="Falcon is an Open Source, simple, fast and powerful programming
+language, easy to learn and to feel comfortable with, and a scripting engine
+ready to empower mission-critical multithreaded applications. Falcon provides
+six integrated programming paradigms: procedural, object oriented, prototype
+oriented, functional, tabular and message oriented."
 HOMEPAGE="http://falconpl.org/"
 SRC_URI="http://falconpl.org/project_dl/_official_rel/Falcon-${PV}.tgz"
 SRC_DIR="Falcon-${PV}"
@@ -13,12 +22,11 @@ PATCH_URI="
 "
 
 PKG_NAMES="${PN}"
-PKG_HINTS="setup"
 
 for m in curl dbi dbus gd2 gtk hpdf sdl
 do
 	PKG_NAMES+=" ${PN}-$m"
-	PKG_HINTS+=" $m"
+	declare falcon_${m}_SUMMARY="${SUMMARY} ($m extension)"
 	declare falcon_${m}_CONTENTS="usr/lib/falcon/${m}*"
 	falcon_CONTENTS+=" --exclude=${m} --exclude=${m}_fm.dll"
 done

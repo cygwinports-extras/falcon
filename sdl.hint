@@ -1,9 +1,0 @@
-category: Interpreters
-requires: falcon libSDL1.2_0 libSDL_image1.2_0 libSDL_mixer1.2_0 libSDL_ttf2.0_0
-external-source: falcon
-sdesc: "Falcon programming language (SDL extension)"
-ldesc: "Falcon is an Open Source, simple, fast and powerful programming
-language, easy to learn and to feel comfortable with, and a scripting
-engine ready to empower mission-critical multithreaded applications.
-Falcon provides six integrated programming paradigms: procedural, object
-oriented, prototype oriented, functional, tabular and message oriented."
